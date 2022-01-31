@@ -28,4 +28,10 @@ export class User {
     get trigger() {
         return this.test.trigger;
     }
+
+    set(params: UserParams): void {
+        this.attributes.set(params);
+
+        this.trigger('set');
+    }
 }

@@ -13,6 +13,7 @@ export class Eventing {
         const handlers = this.events[eventName];
 
         if (!handlers || handlers.length === 0) {
+            console.log('such event is not registered!');
             return;
         }
 

@@ -143,6 +143,7 @@ function () {
       var handlers = _this.events[eventName];
 
       if (!handlers || handlers.length === 0) {
+        console.log('such event is not registered!');
         return;
       }
 
@@ -2391,6 +2392,12 @@ function () {
     enumerable: false,
     configurable: true
   });
+
+  User.prototype.set = function (params) {
+    this.attributes.set(params);
+    this.trigger('set');
+  };
+
   return User;
 }();
 
@@ -2414,6 +2421,9 @@ user.on('test', function () {
 });
 console.log(user.get('age'));
 user.trigger('test');
+user.set({
+  age: 1
+});
 console.log(user);
 },{"./models/User":"src/models/User.ts"}],"../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -2443,7 +2453,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53669" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50938" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

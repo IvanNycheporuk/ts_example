@@ -10,5 +10,7 @@ console.log(user.get('age'));
 
 user.trigger('test');
 
+user.set({ age: 1 });
+
 console.log(user);
 
