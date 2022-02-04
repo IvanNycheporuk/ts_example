@@ -1,16 +1,38 @@
-import { User } from './models/User';
+import { User, IUserParams } from './models/User';
+import { UserEdit } from './views/UserEdit';
+import { UserForm } from './views/UserForm';
+import { UserList } from './views/UserList';
 
-let user = new User({ id: 13, name: 'mbnvasdasdas', age: 12 });
+// let test = User.buildUserCollection();
 
-user.on('test', () => {
-    console.log('test');
-});
+// test.on('fetch', () => {
+//     console.log('data has been retrieved from server');
+// });
 
-console.log(user.get('age'));
+// test.fetch();
 
-user.trigger('test');
+let user = User.buildUser({ name: 'Test', age: 22 });
 
-user.set({ age: 1 });
+let collection = User.buildUserCollection();
 
-console.log(user);
+collection.on('fetch', () => {
+    let collectionView = new UserList(document.getElementById('app'), collection);
+
+    collectionView.render();
+})
+
+collection.fetch();
+
+
+
+// collection.fetch();
+// console.log(collection);
+
+
+
+// let uf = new UserEdit(document.getElementById('app'), user);
+
+// uf.render();
+
+// console.log(uf);
 

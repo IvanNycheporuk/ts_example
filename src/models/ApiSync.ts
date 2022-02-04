@@ -1,10 +1,10 @@
-import axios, { AxiosPromise, AxiosResponse } from 'axios';
+import axios, { AxiosPromise } from 'axios';
 
 interface IHasId {
     id?: number;
 }
 
-export class Sync<T extends IHasId> {
+export class ApiSync<T extends IHasId> {
     constructor(public rooutUrl: string) { }
 
     fetch(id: number): AxiosPromise {
@@ -18,6 +18,6 @@ export class Sync<T extends IHasId> {
             return axios.put(`${this.rooutUrl}/${id}`, data);
         }
 
-        return axios.post(`${this.rooutUrl}/users`, data);
+        return axios.post(`${this.rooutUrl}`, data);
     }
 }
